@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Zen+Dots&display=swap" rel="stylesheet">
+    <style>
+        *:not(.notes-items) {
+            font-family: "Zen Dots", sans-serif;
+        }
+    </style>
+    <!-- <link rel="stylesheet" href="./style.css"> -->
+    <title>Abid Khokhar</title>
+
+</head>
+
+<body>
+    <div class="main bg-gray-100 min-h-screen">
+        <!-- Main Header -->
+        <div class="main-header p-2 md:px-20 py-2 bg-green-950 flex flex-wrap justify-between items-center h-20">
+            <h1 class="site-title text-4xl text-green-300 font-bold">Abid Khokhar</h1>
+            <a href="../index.html"><button class="admin-btn px-5 py-1 text-white border border-white">Home</button></a>
+        </div>
+
+
+
+        <!-- Contant section -->
+        <div class="content-section p-2 md:px-20 py-10">
+            <!-- tagline -->
+            <div class="tagline">
+                <p class="text-center ">Learning is the continuous journey of expanding one's knowledge and skills, and
+                    it lays the
+                    foundation for achieving lasting success by fostering growth, resilience, and innovation.</p>
+            </div>
+
+
+            <section class="read-notes-section flex flex-col py-10 items-center justify-between ">
+
+                <section class="flex flex-col gap-10 justify-between items-center w-full ">
+                    <div class="w-full flex flex-col  justify-center items-center">
+                        <button class="px-5 py-2 bg-green-950 text-white " onclick="showPopup()">Create Note</button>
+
+                        <!-- Popup -->
+                        <div class="m-2 w-[90%] md:w-[30%]  h-[400px] bg-gray-300 text-whtie absolute  top-[100px] z-40  hidden"
+                            id="form_display">
+                            <div
+                                class="popup-header bg-green-950 p-2 text-xl text-white text-center flex flex-wrap gap-2 justify-between items-center p-2">
+                                <h2 class="">Create Note</h2>
+                                <img src="../public/icons/crosss.png" alt=""
+                                    class="w-5 h-5 bg-white rounded-full cursor-pointer" onclick="hidePopeup()">
+                            </div>
+                            <div class="py-5 p-4 ">
+                                <form action="http://localhost:3002/api/notes"  method="POST" id="add-note-form">
+                                    <textarea name="description" class="p-2 w-full h-40 bg-gray-200 border border-gray-400"
+                                        placeholder="Write something ..." required></textarea>
+                                    <input type="text" name="refrence" placeholder="Reference" class="my-1 w-full p-2 bg-gray-200 border border-gray-400"
+                                        required>
+                                    <select name="category" id="categories"
+                                        class="my-1 w-full bg-gray-200 p-2 border border-gray-400">
+                                        <option value="self">Self</option>
+                                        <option value="refrence">Refrence</option>
+                                        <option value="technical">Technical</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                
+                                    <button type="submit" class="mt-5 w-full bg-green-950 text-white py-2">Submit</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pb-10">
+                        <label for="">Category</label><br>
+                        <select name="categories" id="cars"
+                            class="w-40 md:w-80 p-2 border border-gray-200 bg-green-900 text-white">
+                            <option value="slef" class="bg-white text-black ">Self</option>
+                            <option value="refrenced" class="bg-white text-black ">Refrenced</option>
+                            <option value="technical" class="bg-white text-black ">Technical</option>
+                            <option value="other" class="bg-white text-black ">Other</option>
+                        </select>
+                    </div>
+                </section>
+
+
+                <!-- Notes -->
+                <div class="notes-items pb-20">
+                    <ul class="flex flex-col gap-5  " id="notes-items">
+                    </ul>
+
+                </div>
+
+            </section>
+        </div>
+
+
+        <!-- Main Footer -->
+        <div class="main-header bg-green-950 p-2 md:px-20  flex flex-wrap justify-between gap-5 items-center h-16">
+            <h1 class="site-title text-xl text-green-300">Developed by : Abid Khokhar</h1>
+            <ul class="flex flex-wrap gap-2">
+                <a href="">
+                    <li class="hover:scale-105 duration-500"><img src="../public/icons/linkedin.png" alt="linkedin"
+                            class="w-6 h-6"></li>
+                </a>
+                <a href="">
+                    <li class="hover:scale-105 duration-500"><img src="../public/icons/whatsapp.png" alt="whatsapp"
+                            class="w-6 h-6"></li>
+                </a>
+            </ul>
+        </div>
+
+    </div>
+
+    <script src="./script.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+
+        let formDisplay = document.getElementById('form_display');
+        let showPopup = () => {
+            formDisplay.style.display = "block"
+
+        }
+        let hidePopeup = () => {
+            formDisplay.style.display = "none"
+            setTimeout(() => {
+                location.reload();
+              },1000)
+        }
+
+
+    </script>
+</body>
+
+
+</html>
